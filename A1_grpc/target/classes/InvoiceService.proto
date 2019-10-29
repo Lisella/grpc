@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_package = "com.aufgabe.grpc";
+option java_multiple_files = true;
+
+
+service AVG {
+    rpc FindInvoiceById (ClientId) returns (Invoice) {}
+    rpc GetVolumeOfSales (Product) returns (SalesVolume) {}
+    rpc CreateInvoice (Invoice) returns (Msg) {}
+}
+
+message Product {
+    string name =1;
+    int32 id = 2;
+    float salesVolume = 3;
+}
+
+message Invoice {
+    string clientId = 1;
+    Product product = 2;
+    int32 number = 3;
+}
+
+message ClientId {
+    string clientId = 1;
+}
+
+message SalesVolume {
+    float amount = 1;
+}
+
+message Msg {
+    string msg = 1;
+}
